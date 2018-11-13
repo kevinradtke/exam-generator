@@ -7,7 +7,10 @@ import {
   Typography,
   CardMedia,
   Divider,
+  Button,
 } from "@material-ui/core/";
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const styles = theme => ({
   root: {
@@ -46,6 +49,10 @@ function PreguntasCard(props) {
           <Typography variant="subheading">
             <b>Respuesta:</b> {props.respuesta}
           </Typography>
+          <Button variant="contained" color="secondary" className={classes.button}>
+            Delete
+            <DeleteIcon className={classes.rightIcon} />
+          </Button>
         </CardContent>
       </div>
       <CardMedia
