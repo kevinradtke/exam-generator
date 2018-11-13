@@ -50,8 +50,6 @@ function PreguntasCard(props) {
       </div>
       <CardMedia
         className={classes.cover}
-        image="/static/images/cards/live-from-space.jpg"
-        title="Live from space album cover"
       />
     </Card>
   );
