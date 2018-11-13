@@ -1,0 +1,35 @@
+{
+  "materias": {
+    "Matemáticas": {
+      "0": "Análisis de datos",
+      "1": "Algebra",
+      "2": "Restas",
+      "3": "Multiplicaciones"
+    },
+    "Física": {
+      "0": "Análisis Dimensional",
+      "1": "Vectores",
+      "2": "Fuerza"
+    },
+    "Fundamentos de Programación": {
+      "0": "Arrays",
+      "1": "Ciclos",
+      "2": "Strings",
+      "3": "Pointers"
+    }
+  },
+  "preguntas": {
+    "1542082612999": {
+      "name": "¿Cuántas manzanas tiene pepe después de comprar 2?",
+      "materia": "Matemáticas",
+      "tema": "Algebra",
+      "cantidadDeOpciones": "4",
+      "opciones": {
+        "0": "30 kilogramos",
+        "1": "31 kilogramos",
+        "2": "32 kilogramos",
+        "3": "33 kilogramos"
+      }
+    } 
+  }
+}
