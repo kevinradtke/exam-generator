@@ -8,7 +8,6 @@ import {
   withStyles,
   Grid,
   TextField,
-  InputAdornment
 } from "@material-ui/core";
 
 const styles = {
@@ -53,7 +52,7 @@ function ExamenForm(props) {
               label="Título"
               className={classes.textField}
               margin="normal"
-              onChange={(e) => props.handleChange(e, "name")}
+              onChange={(e) => props.handleChange(e, "titulo")}
               value={props.titulo}
             />
 
@@ -94,14 +93,18 @@ function ExamenForm(props) {
               label="Número de preguntas"
               className={classes.textField}
               margin="normal"
+              onChange={(e) => props.handleChange(e, "npreguntas")}
+              value={props.npreguntas}
             />
 
           </form>
+
         </CardContent>
         <CardActions>
-          <Button fullWidth color="primary" variant="contained" size="small">
+          <Button onClick={props.handleSubmit} fullWidth color="primary" variant="contained" size="small">
             Guardar
           </Button>
+
         </CardActions>
       </Card>
     </Grid>

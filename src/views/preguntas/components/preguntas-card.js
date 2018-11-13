@@ -1,15 +1,14 @@
 import React from "react";
 import {
   withStyles,
-  Grid,
   Card,
   CardContent,
   Typography,
   CardMedia,
   Divider,
   Button,
+  CardActions,
 } from "@material-ui/core/";
-import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 const styles = theme => ({
@@ -49,10 +48,15 @@ function PreguntasCard(props) {
           <Typography variant="subheading">
             <b>Respuesta:</b> {props.respuesta}
           </Typography>
-          <Button fullWidth variant="contained" color="secondary" className={classes.button}>
-            Delete
-            <DeleteIcon className={classes.rightIcon} />
-          </Button>
+          <CardActions>
+            <Button fullWidth variant="contained" color="secondary" className={classes.button}>
+              Borrar
+              <DeleteIcon className={classes.rightIcon} />
+            </Button>
+            <Button fullWidth variant="contained" className={classes.button}>
+              Editar
+            </Button>
+          </CardActions>
         </CardContent>
       </div>
       <CardMedia

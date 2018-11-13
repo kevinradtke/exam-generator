@@ -9,7 +9,6 @@ const styles = theme => ({
 });
 
 function PreguntasList(props) {
-  const { classes } = props;
   return (
     <Grid item xs={12} md={8}>
       {

@@ -9,7 +9,7 @@ const styles = theme => ({
 });
 
 function ExamenesList(props) {
-  const { classes } = props;
+
   return (
     <Grid item xs={12} md={8}>
       {
