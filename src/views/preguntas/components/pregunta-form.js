@@ -37,6 +37,7 @@ function PreguntaForm(props) {
     <Grid item xs={12} md={4}>
       <Card className={classes.card}>
         <CardContent>
+
           <Typography
             color="primary"
             gutterBottom
@@ -45,14 +46,17 @@ function PreguntaForm(props) {
           >
             Crear Pregunta
           </Typography>
+
           <form className={classes.form} onSubmit={props.handleSubmit}>
+
             <TextField
-              label="Name"
+              label="Pregunta"
               className={classes.textField}
               margin="normal"
               onChange={(e) => props.handleChange(e, "name")}
               value={props.name}
             />
+
             <TextField
               select
               label="Materia"
@@ -68,6 +72,7 @@ function PreguntaForm(props) {
                 </option>
               ))}
             </TextField>
+
             <TextField
               select
               label="Tema"
@@ -84,6 +89,7 @@ function PreguntaForm(props) {
                 </option>
               ))}
             </TextField>
+
             <TextField
               select
               label="Selecciona cantidad de opciones"
@@ -99,6 +105,7 @@ function PreguntaForm(props) {
                 </option>
               ))}
             </TextField>
+
             {
               props.opciones.map((opcion,id) => (
                 <TextField
@@ -119,6 +126,7 @@ function PreguntaForm(props) {
                 />
               ))
             }
+
           </form>
         </CardContent>
         <CardActions>

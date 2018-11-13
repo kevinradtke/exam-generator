@@ -8,6 +8,8 @@ import { database } from "../../config/firebase"
 
 class Examenes extends Component {
 
+//MODEL
+
   componentDidMount() {
     this.setObserver();
   }
@@ -17,7 +19,7 @@ class Examenes extends Component {
       titulo: "",
       materias: "Matemáticas",
       temas: "",
-      nPreguntas: ""
+      npreguntas: ""
     },
     examenes: null,
     materias: null
@@ -34,11 +36,54 @@ class Examenes extends Component {
     });
   }
 
+
+//CONTROLLER
+
+resetForm = () => {
+  this.setState({
+    ...this.state,
+    examForm: {
+      titulo: "",
+      materia: "Matemáticas",
+      tema: "",
+      npreguntas: 0
+      }
+  })
+}
+
+handleSubmit = () => {
+  let id = Date.now();
+  database
+    .ref("/examenes/" + id)
+    .update(this.state.examForm)
+    .then(status => {
+      console.log(status)
+      this.resetForm();
+    })
+    .catch(error => console.log(error))
+}
+
+//AUN NO JALA
+handleDelete = (event, pid) => {
+  console.log(pid)
+}
+
+handleChange = (event, id) => {
+  let newState = { ...this.state };
+  newState.examForm[id] = event.target.value;
+  this.setState(newState);
+}
+
+//RENDERS VIEW
+
   render() {
     return (
       <ViewLayout>
         <ExamenForm
           {...this.state.examForm}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          api={api}
         />
         <ExamenesList
           examenes={this.state.examenes}

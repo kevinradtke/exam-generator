@@ -10,7 +10,6 @@ import {
   TextField,
   InputAdornment
 } from "@material-ui/core";
-import api from "../../../api.json";
 
 const styles = {
   card: {
@@ -38,6 +37,7 @@ function ExamenForm(props) {
     <Grid item xs={12} md={4}>
       <Card className={classes.card}>
         <CardContent>
+
           <Typography
             color="primary"
             gutterBottom
@@ -46,12 +46,15 @@ function ExamenForm(props) {
           >
             Crear Examen
           </Typography>
+
           <form className={classes.form}>
+
             <TextField
               label="Título"
               className={classes.textField}
               margin="normal"
             />
+
             <TextField
               select
               label="Materia"
@@ -61,12 +64,13 @@ function ExamenForm(props) {
               onChange={e => props.handleChange(e, "materia")}
               value={props.materia}
             >
-              {Object.keys(api.materias).map((materia, id) => (
+              {Object.keys(props.api.materias).map((materia, id) => (
                 <option key={id} value={materia}>
                   {materia}
                 </option>
               ))}
             </TextField>
+
             <TextField
               select
               label="Tema"
@@ -75,17 +79,19 @@ function ExamenForm(props) {
               margin="normal"
             >
               <option hidden value="" />
-              {Object.keys(api.materias[props.materias]).map((materia, id) => (
-                <option key={id} value={materia}>
-                  {materia}
+              {Object.keys(props.api.materias[props.materias]).map((tema, id) => (
+                <option key={id} value={props.api.materias[props.materia][tema]}>
+                  {props.api.materias[props.materia][tema]}
                 </option>
               ))}
             </TextField>
+
             <TextField
               label="Número de preguntas"
               className={classes.textField}
               margin="normal"
             />
+
           </form>
         </CardContent>
         <CardActions>

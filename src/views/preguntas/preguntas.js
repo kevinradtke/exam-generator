@@ -7,6 +7,9 @@ import api from '../../api.json'
 import { database } from "../../config/firebase";
 
 class Preguntas extends Component {
+
+  //MODEL
+
   componentDidMount() {
     this.setObserver();
   }
@@ -35,6 +38,9 @@ class Preguntas extends Component {
     });
   }
 
+
+  //CONTROLLER
+
   resetForm = () => {
     this.setState({
       ...this.state,
@@ -60,6 +66,7 @@ class Preguntas extends Component {
       .catch(error => console.log(error))
   }
 
+  //AUN NO JALA
   handleDelete = (event, pid) => {
     console.log(pid)
   }
@@ -82,6 +89,9 @@ class Preguntas extends Component {
     }
     this.setState(newState);
   };
+
+
+  //RENDERS VIEW
 
   render() {
     return (
