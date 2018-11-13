@@ -49,7 +49,7 @@ function PreguntasCard(props) {
           <Typography variant="subheading">
             <b>Respuesta:</b> {props.respuesta}
           </Typography>
-          <Button variant="contained" color="secondary" className={classes.button}>
+          <Button fullWidth variant="contained" color="secondary" className={classes.button}>
             Delete
             <DeleteIcon className={classes.rightIcon} />
           </Button>

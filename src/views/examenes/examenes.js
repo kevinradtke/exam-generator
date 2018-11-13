@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ViewLayout from "../../components/molecules/view-layout";
 import { withRouter } from 'react-router-dom'
 import ExamenForm from './components/examen-form'
+import ExamenesList from './components/examenes-list'
 import { database } from "../../config/firebase"
 
 class Examenes extends Component {
@@ -28,6 +29,7 @@ class Examenes extends Component {
         ...this.state,
         examenes: snapshot.val().examenes,
       })
+      console.log(this.state.examenes)
     });
   }
 
@@ -37,6 +39,9 @@ class Examenes extends Component {
       <ViewLayout>
         <ExamenForm
           {...this.state.examForm}
+        />
+        <ExamenesList
+          examenes={this.state.examenes}
         />
       </ViewLayout>
     );

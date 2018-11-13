@@ -20,6 +20,7 @@ class Preguntas extends Component {
       opciones: [""]
     },
     preguntas: null,
+    materias: null
   };
 
   setObserver = () => {
@@ -29,6 +30,7 @@ class Preguntas extends Component {
       this.setState({
         ...this.state,
         preguntas: snapshot.val().preguntas,
+        materias: snapshot.val().materias
       })
     });
   }
@@ -56,6 +58,10 @@ class Preguntas extends Component {
         this.resetForm();
       })
       .catch(error => console.log(error))
+  }
+
+  handleDelete = (event, pid) => {
+    console.log(pid)
   }
 
   handleOptionChange = (event, id) => {
@@ -87,7 +93,7 @@ class Preguntas extends Component {
           handleSubmit={this.handleSubmit}
           api={api}
         />
-        <PreguntasList 
+        <PreguntasList
           preguntas={this.state.preguntas}
         />
       </ViewLayout>

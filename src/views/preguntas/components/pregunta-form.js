@@ -74,7 +74,7 @@ function PreguntaForm(props) {
               className={classes.textField}
               SelectProps={{ native: true }}
               margin="normal"
-              onChange={(e) => props.handleChange(e, "tema")}              
+              onChange={(e) => props.handleChange(e, "tema")}
               value={props.tema}
             >
             <option hidden value=""></option>
@@ -90,7 +90,7 @@ function PreguntaForm(props) {
               className={classes.textField}
               SelectProps={{ native: true }}
               margin="normal"
-              onChange={(e) => props.handleChange(e, "cantidadDeOpciones")}              
+              onChange={(e) => props.handleChange(e, "cantidadDeOpciones")}
               value={props.cantidadDeOpciones}
             >
               {[1, 2, 3, 4].map((materia, id) => (
@@ -110,7 +110,7 @@ function PreguntaForm(props) {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">{
-                        id === 0 ? 'A' : 
+                        id === 0 ? 'A' :
                           id === 1 ? 'B' :
                             id === 2 ? 'C' : 'D'
                       })</InputAdornment>

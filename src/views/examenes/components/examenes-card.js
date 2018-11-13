@@ -47,7 +47,7 @@ function ExamenesCard(props) {
             <b>Tema:</b> {props.tema}
           </Typography>
           <Typography variant="subheading">
-            <b>Numero de preguntas:</b> {props.nPreguntas}
+            <b>Numero de preguntas:</b> {props.npreguntas}
           </Typography>
           <Button variant="contained" color="secondary" className={classes.button}>
             Delete

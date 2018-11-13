@@ -14,8 +14,8 @@ function PreguntasList(props) {
     <Grid item xs={12} md={8}>
       {
         props.preguntas && Object.keys(props.preguntas).map((pregunta, id) => (
-          <PreguntasCard 
-            key={id} 
+          <PreguntasCard
+            key={id}
             name={props.preguntas[pregunta].name}
             materia={props.preguntas[pregunta].materia}
             tema={props.preguntas[pregunta].tema}
