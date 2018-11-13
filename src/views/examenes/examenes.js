@@ -17,12 +17,12 @@ class Examenes extends Component {
   state = {
     examForm: {
       titulo: "",
-      materias: "Matemáticas",
+      materia: "Matemáticas",
       temas: "",
       npreguntas: ""
     },
     examenes: null,
-    materias: null
+    // materias: null
   }
 
   setObserver = () => {

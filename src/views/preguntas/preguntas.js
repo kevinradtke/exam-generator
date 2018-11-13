@@ -23,7 +23,7 @@ class Preguntas extends Component {
       opciones: [""]
     },
     preguntas: null,
-    materias: null
+    // materias: null
   };
 
   setObserver = () => {
@@ -33,7 +33,7 @@ class Preguntas extends Component {
       this.setState({
         ...this.state,
         preguntas: snapshot.val().preguntas,
-        materias: snapshot.val().materias
+        // materias: snapshot.val().materias
       })
     });
   }

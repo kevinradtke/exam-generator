@@ -53,6 +53,8 @@ function ExamenForm(props) {
               label="Título"
               className={classes.textField}
               margin="normal"
+              onChange={(e) => props.handleChange(e, "name")}
+              value={props.titulo}
             />
 
             <TextField
@@ -77,9 +79,11 @@ function ExamenForm(props) {
               className={classes.textField}
               SelectProps={{ native: true }}
               margin="normal"
+              onChange={(e) => props.handleChange(e, "tema")}
+              value={props.tema}
             >
-              <option hidden value="" />
-              {Object.keys(props.api.materias[props.materias]).map((tema, id) => (
+            <option hidden value=""></option>
+              {Object.keys(props.api.materias[props.materia]).map((tema, id) => (
                 <option key={id} value={props.api.materias[props.materia][tema]}>
                   {props.api.materias[props.materia][tema]}
                 </option>
