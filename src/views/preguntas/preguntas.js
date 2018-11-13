@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PreguntaForm from "./components/pregunta-form";
+import PreguntasList from './components/preguntas-list';
 import ViewLayout from "../../components/molecules/view-layout";
 import { withRouter } from 'react-router-dom'
-import PreguntasList from './components/preguntas-list';
 import api from '../../api.json'
 import { database } from "../../config/firebase";
 

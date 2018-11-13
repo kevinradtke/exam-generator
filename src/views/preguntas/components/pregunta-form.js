@@ -110,9 +110,9 @@ function PreguntaForm(props) {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">{
-                        id === 0 ? 'A' :
-                          id === 1 ? 'B' :
-                            id === 2 ? 'C' : 'D'
+                        id === 0 ? 'Resp' :
+                          id === 1 ? 'Op.1' :
+                            id === 2 ? 'Op.2' : 'Op.3'
                       })</InputAdornment>
                     )
                   }}

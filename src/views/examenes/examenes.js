@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import ViewLayout from "../../components/molecules/view-layout";
-import { withRouter } from 'react-router-dom'
 import ExamenForm from './components/examen-form'
 import ExamenesList from './components/examenes-list'
+import ViewLayout from "../../components/molecules/view-layout";
+import { withRouter } from 'react-router-dom'
+import api from '../../api.json'
 import { database } from "../../config/firebase"
 
 class Examenes extends Component {
@@ -19,6 +20,7 @@ class Examenes extends Component {
       nPreguntas: ""
     },
     examenes: null,
+    materias: null
   }
 
   setObserver = () => {
@@ -29,12 +31,10 @@ class Examenes extends Component {
         ...this.state,
         examenes: snapshot.val().examenes,
       })
-      console.log(this.state.examenes)
     });
   }
 
   render() {
-    console.log(this.state.examenes)
     return (
       <ViewLayout>
         <ExamenForm

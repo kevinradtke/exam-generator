@@ -16,10 +16,10 @@ function ExamenesList(props) {
         props.examenes && Object.keys(props.examenes).map((examen, id) => (
           <ExamenesCard
             key={id}
-            name={props.examenes[examen].name}
+            titulo={props.examenes[examen].titulo}
             materia={props.examenes[examen].materia}
             tema={props.examenes[examen].tema}
-            respuesta={props.examenes[examen].nPreguntas}
+            npreguntas={props.examenes[examen].npreguntas}
           />
         ))
       }

@@ -48,7 +48,7 @@ function ExamenForm(props) {
           </Typography>
           <form className={classes.form}>
             <TextField
-              label="Títutlo"
+              label="Título"
               className={classes.textField}
               margin="normal"
             />
@@ -82,7 +82,7 @@ function ExamenForm(props) {
               ))}
             </TextField>
             <TextField
-              label="Títutlo"
+              label="Número de preguntas"
               className={classes.textField}
               margin="normal"
             />
