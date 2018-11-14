@@ -10,6 +10,8 @@ import {
   TextField,
   InputAdornment
 } from "@material-ui/core";
+
+import DeleteIcon from '@material-ui/icons/Delete';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -61,11 +63,9 @@ function PreguntaForm(props) {
               className={classes.textField}
               SelectProps={{ native: true }}
               margin="normal"
-              onChange={(e) => props.handleChange(e, "materia")}
-              value={props.materia}
             >
               {Object.keys(props.api.materias).map((materia, id) => (
-                <option key={id} value={materia}>
+                <option key={id} >
                   {materia}
                 </option>
               ))}
@@ -75,23 +75,82 @@ function PreguntaForm(props) {
               label="Nombre de tema"
               className={classes.textField}
               margin="normal"
-              onChange={(e) => props.handleChange(e, "name")}
-              value={props.name}
             />
 
 
           </form>
         </CardContent>
         <CardActions>
-          <Button fullWidth color="primary" variant="contained" size="small">
+          <Button onClick={props.handleChangeT} fullWidth color="primary" variant="contained" size="small">
             Guardar
           </Button>
 
         </CardActions>
 
+        <CardContent>
+
+          <Typography
+            color="primary"
+            gutterBottom
+            variant="title"
+            component="h1"
+          >
+            Modificar Tema
+          </Typography>
+
+          <form className={classes.form} onSubmit={props.handleSubmit}>
+
+
+          <TextField
+            select
+            label="Materia"
+            className={classes.textField}
+            SelectProps={{ native: true }}
+            margin="normal"
+            value={props.materia}
+          >
+            {Object.keys(props.api.materias).map((materia, id) => (
+              <option key={id} value={materia}>
+                {materia}
+              </option>
+            ))}
+          </TextField>
+
+        { /* <TextField
+            select
+            label="Tema"
+            className={classes.textField}
+            SelectProps={{ native: true }}
+            margin="normal"
+            value={props.tema}
+          >
+          <option hidden value=""></option>
+            {Object.keys(props.api.materias[props.materia]).map((tema, id) => (
+              <option key={id} value={props.api.materias[props.materia][tema]}>
+                {props.api.materias[props.materia][tema]}
+              </option>
+            ))}
+          </TextField> */}
+
+
+
+
+          </form>
+        </CardContent>
+        <CardActions>
+        <Button  onClick={props.handleDeleteT} fullWidth variant="contained" color="secondary" className={classes.button}>
+          Borrar
+          <DeleteIcon className={classes.rightIcon} />
+        </Button>
+        <Button  onClick={props.handleEditT} fullWidth variant="contained" className={classes.button}>
+          Editar
+        </Button>
+
+        </CardActions>
 
 
       </Card>
+
     </Grid>
   );
 }
