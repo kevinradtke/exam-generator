@@ -124,6 +124,7 @@ handleGenPDF = (event, id) => {
   })
 
   document.getElementById('toPrint').style.color = 'black'
+  document.getElementById('toPrintA').style.color = 'black'
   this.printDocument()
   alert("PDF generado para el examen con id " + id)
 }
@@ -133,18 +134,28 @@ handleEdit = (event, id) => {
 }
 
 printDocument = () =>  {
-  console.log(this.state.pdf.nversiones)
-  for (var i =0; i<this.state.pdf.nversiones; i++){
-    const input = document.getElementById('toPrint');
+
+  // for (var i =0; i<this.state.pdf.nversiones; i++){
+    let input = document.getElementById('toPrint');
     html2canvas(input)
       .then((canvas) => {
         const imgData = canvas.toDataURL('image/png');
         const pdf = new jsPDF();
         pdf.addImage(imgData, 'JPEG', 0, 0);
         // pdf.output('dataurlnewwindow');
-        pdf.save("download.pdf");
-      })
-  }
+        pdf.save(this.state.pdf.titulo+".pdf");
+      }
+    )
+  // }
+  input = document.getElementById('toPrintA');
+  html2canvas(input)
+    .then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF();
+      pdf.addImage(imgData, 'JPEG', 0, 0);
+      // pdf.output('dataurlnewwindow');
+      pdf.save("Respuestas "+ this.state.pdf.titulo +".pdf");
+    })
 }
 
 //RENDERS VIEW
@@ -183,6 +194,24 @@ printDocument = () =>  {
                   oid===1 ? "b" :
                     oid===2 ? "c": "d"}) {this.state.pdf.preguntas[pregunta].opciones[oid]}
                 </p>)
+              }
+              </p>
+            ))}
+
+        </div>
+
+        <div id="toPrintA" className="toPrint">
+          <p> {this.state.pdf.titulo} </p>
+          <p>Materia: {this.state.pdf.materia} / Tema: {this.state.pdf.tema}</p>
+          <p>Hoja de Respuestas</p>
+
+            {this.state.pdf.preguntas && Object.keys(this.state.pdf.preguntas).map((pregunta,id) => (
+              <p>
+              {id+1}. {this.state.pdf.preguntas[pregunta].name} <br></br>
+              {
+                <p>
+                 Respuesta: {this.state.pdf.preguntas[pregunta].opciones[0]}
+                </p>
               }
               </p>
             ))}
