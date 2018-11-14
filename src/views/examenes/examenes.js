@@ -5,6 +5,7 @@ import ViewLayout from "../../components/molecules/view-layout";
 import { withRouter } from 'react-router-dom'
 import api from '../../api.json'
 import { database } from "../../config/firebase"
+import { Document } from 'react-pdf/dist/entry.noworker';
 
 class Examenes extends Component {
 
