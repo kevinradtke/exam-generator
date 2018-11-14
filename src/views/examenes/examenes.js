@@ -22,35 +22,31 @@ class Examenes extends Component {
     examForm: {
       titulo: "",
       materia: "Matemáticas",
-<<<<<<< HEAD
       tema: "",
-      npreguntas: ""
-=======
-      temas: "",
+      npreguntas: "",
       npreguntas: "",
       nversiones: ""
->>>>>>> 1152917952e1c358abf35f16d064bd0f801aa0cc
     },
     examenes: null,
     materias: null,
-
 
     //ESTADO PARA GENERAR PDFS
     pdf: {
       titulo: "Examen Final",
       materia: "Matemáticas",
       tema: "Restas",
-      preguntas: {
-        0: {
+      preguntas:[
+        {
           name: "¿5-3?",
           opciones: ["2","4","6"]
         },
-        1: {
+        {
           name: "¿20-5?",
           opciones: ["15", "16"]
         }
-      }
+      ]
     }
+
   }
 
   setObserver = () => {
@@ -110,6 +106,7 @@ handleChange = (event, id) => {
 }
 
 handleGenPDF = (event, id) => {
+  document.getElementById('toPrint').style.display = 'run-in'
   alert("PDF generado para el examen con id " + id)
   this.printDocument()
 }
@@ -150,19 +147,18 @@ printDocument = () =>  {
           handleEdit={this.handleEdit}
         />
 
-        {
           <div id="toPrint" className="toPrint">
             <p> {this.state.pdf.titulo} </p>
             <p>Materia: {this.state.pdf.materia} / Tema: {this.state.pdf.tema}</p>
             <p>Nombre del alumno: ______________________________</p>
-            <p>1. {this.state.pdf.preguntas[0].name}</p>
-            <p>a){this.state.pdf.preguntas[0].opciones[0]} &nbsp; &nbsp; b){this.state.pdf.preguntas[0].opciones[1]} &nbsp; &nbsp;
-            c){this.state.pdf.preguntas[0].opciones[2]} </p>
 
-            <p>2. {this.state.pdf.preguntas[1].name}</p>
-            <p>a){this.state.pdf.preguntas[1].opciones[0]} &nbsp; &nbsp; b){this.state.pdf.preguntas[1].opciones[1]}</p>
+            {this.state.pdf.preguntas && (this.state.pdf.preguntas).map((pregunta,id) => (
+              <p>
+              {id+1}. {pregunta.name} <br></br>
+              </p>
+            ))}
           </div>
-        }
+
 
       </ViewLayout>
     );

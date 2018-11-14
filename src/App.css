@@ -32,7 +32,7 @@
 }
 
 .toPrint {
-  
+  display:run-in;
 }
 
 a {
