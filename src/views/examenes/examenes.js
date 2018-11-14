@@ -24,10 +24,10 @@ class Examenes extends Component {
       materia: "Matemáticas",
       tema: "",
       npreguntas: "",
-      npreguntas: "",
       nversiones: ""
     },
     examenes: null,
+    preguntas: null,
     materias: null,
 
     //ESTADO PARA GENERAR PDFS
@@ -35,16 +35,8 @@ class Examenes extends Component {
       titulo: "Examen Final",
       materia: "Matemáticas",
       tema: "Restas",
-      preguntas:[
-        {
-          name: "¿5-3?",
-          opciones: ["2","4","6"]
-        },
-        {
-          name: "¿20-5?",
-          opciones: ["15", "16"]
-        }
-      ]
+      preguntas: "",
+      nversiones: 0
     }
 
   }
@@ -56,6 +48,7 @@ class Examenes extends Component {
       this.setState({
         ...this.state,
         examenes: snapshot.val().examenes,
+        preguntas: snapshot.val().preguntas,
       })
     });
   }
@@ -106,9 +99,33 @@ handleChange = (event, id) => {
 }
 
 handleGenPDF = (event, id) => {
-  document.getElementById('toPrint').style.display = 'run-in'
-  alert("PDF generado para el examen con id " + id)
+  let pdfInfo = ""
+  let pdfPreguntas = []
+  this.state.examenes && Object.keys(this.state.examenes).map((examen, index) => (
+    (id === examen) && (pdfInfo = this.state.examenes[examen])
+  ))
+
+  this.state.preguntas && Object.keys(this.state.preguntas).map((preg, index) => (
+    (this.state.preguntas[preg].tema === pdfInfo.tema) &&
+    ( pdfPreguntas.push(this.state.preguntas[preg]))
+  ))
+
+  console.log(pdfPreguntas)
+
+  this.setState({
+    ...this.state,
+    pdf: {
+      titulo: pdfInfo.titulo,
+      materia: pdfInfo.materia,
+      nversiones: pdfInfo.nversiones,
+      tema: pdfInfo.tema,
+      preguntas: pdfPreguntas
+      }
+  })
+
+  document.getElementById('toPrint').style.color = 'black'
   this.printDocument()
+  alert("PDF generado para el examen con id " + id)
 }
 
 handleEdit = (event, id) => {
@@ -116,23 +133,25 @@ handleEdit = (event, id) => {
 }
 
 printDocument = () =>  {
-  const input = document.getElementById('toPrint');
-  html2canvas(input)
-    .then((canvas) => {
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF();
-      pdf.addImage(imgData, 'JPEG', 0, 0);
-      // pdf.output('dataurlnewwindow');
-      pdf.save("download.pdf");
-    })
+  console.log(this.state.pdf.nversiones)
+  for (var i =0; i<this.state.pdf.nversiones; i++){
+    const input = document.getElementById('toPrint');
+    html2canvas(input)
+      .then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF();
+        pdf.addImage(imgData, 'JPEG', 0, 0);
+        // pdf.output('dataurlnewwindow');
+        pdf.save("download.pdf");
+      })
+  }
 }
 
 //RENDERS VIEW
 
   render() {
-
-
     return (
+
       <ViewLayout>
         <ExamenForm
           {...this.state.examForm}
@@ -147,18 +166,28 @@ printDocument = () =>  {
           handleEdit={this.handleEdit}
         />
 
-          <div id="toPrint" className="toPrint">
-            <p> {this.state.pdf.titulo} </p>
-            <p>Materia: {this.state.pdf.materia} / Tema: {this.state.pdf.tema}</p>
-            <p>Nombre del alumno: ______________________________</p>
 
-            {this.state.pdf.preguntas && (this.state.pdf.preguntas).map((pregunta,id) => (
+        <div id="toPrint" className="toPrint">
+          <p> {this.state.pdf.titulo} </p>
+          <p>Materia: {this.state.pdf.materia} / Tema: {this.state.pdf.tema}</p>
+          <p>Nombre del alumno: ______________________________</p>
+
+
+            {this.state.pdf.preguntas && Object.keys(this.state.pdf.preguntas).map((pregunta,id) => (
               <p>
-              {id+1}. {pregunta.name} <br></br>
+              {id+1}. {this.state.pdf.preguntas[pregunta].name} <br></br>
+              {
+                (this.state.pdf.preguntas[pregunta].opciones).map((opcion, oid) =>
+                <p>
+                {oid===0 ? "a" :
+                  oid===1 ? "b" :
+                    oid===2 ? "c": "d"}) {this.state.pdf.preguntas[pregunta].opciones[oid]}
+                </p>)
+              }
               </p>
             ))}
-          </div>
 
+        </div>
 
       </ViewLayout>
     );
