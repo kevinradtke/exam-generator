@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PreguntaForm from "./components/pregunta-form";
 import PreguntasList from './components/preguntas-list';
+//import PreguntasCard from './components/preguntas-card';
 import ViewLayout from "../../components/molecules/view-layout";
 import { withRouter } from 'react-router-dom'
 import api from '../../api.json'
@@ -67,10 +68,16 @@ class Preguntas extends Component {
       .catch(error => console.log(error))
   }
 
-  //AUN NO JALA
-  handleDelete = (event, pid) => {
-    console.log(pid)
-  }
+
+  handleDelete = (event, id) => {
+    database
+      .ref("/preguntas/" + id).remove()
+      .then(status => {
+        console.log(status)
+        this.resetForm();
+      })
+      .catch(error => console.log(error))
+  };
 
   handleOptionChange = (event, id) => {
     let newState = { ...this.state };
@@ -105,6 +112,7 @@ class Preguntas extends Component {
   render() {
     return (
       <ViewLayout>
+
         <PreguntaForm
           {...this.state.questionForm}
           handleChange={this.handleChange}
@@ -112,11 +120,15 @@ class Preguntas extends Component {
           handleSubmit={this.handleSubmit}
           handleClose={this.handleClose}
           handleClickOpen={this.handleClickOpen}
+
           api={api}
           open={this.state.open}
         />
+
+
         <PreguntasList
           preguntas={this.state.preguntas}
+          handleDelete={this.handleDelete}
         />
       </ViewLayout>
     );

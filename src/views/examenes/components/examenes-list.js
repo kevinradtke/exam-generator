@@ -20,6 +20,8 @@ function ExamenesList(props) {
             materia={props.examenes[examen].materia}
             tema={props.examenes[examen].tema}
             npreguntas={props.examenes[examen].npreguntas}
+            id = {examen}
+            handleDelete={props.handleDelete}
           />
         ))
       }

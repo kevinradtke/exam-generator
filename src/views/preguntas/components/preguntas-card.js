@@ -53,7 +53,7 @@ function PreguntasCard(props) {
             <b>Respuesta:</b> {props.respuesta}
           </Typography>
           <CardActions>
-            <Button fullWidth variant="contained" color="secondary" className={classes.button}>
+            <Button onClick={(e) => props.handleDelete(e, props.id)} fullWidth variant="contained" color="secondary" className={classes.button}>
               Borrar
               <DeleteIcon className={classes.rightIcon} />
             </Button>

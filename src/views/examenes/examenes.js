@@ -73,10 +73,16 @@ handleSubmit = () => {
     .catch(error => console.log(error))
 }
 
-//AUN NO JALA
-handleDelete = (event, pid) => {
-  console.log(pid)
-}
+handleDelete = (event, id) => {
+  console.log(id)
+  database
+    .ref("/examenes/" + id).remove()
+    .then(status => {
+      console.log(status)
+      this.resetForm();
+    })
+    .catch(error => console.log(error))
+};
 
 handleChange = (event, id) => {
   let newState = { ...this.state };
@@ -99,6 +105,7 @@ handleChange = (event, id) => {
         />
         <ExamenesList
           examenes={this.state.examenes}
+          handleDelete={this.handleDelete}
         />
       </ViewLayout>
     );
