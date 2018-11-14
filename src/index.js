@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-require('pdfmake/build/pdfmake.js')
-require('pdfmake/build/vfs_fonts.js')
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
