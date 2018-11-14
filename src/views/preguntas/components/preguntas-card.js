@@ -29,6 +29,10 @@ const styles = theme => ({
 
 function PreguntasCard(props) {
   const { classes } = props;
+
+  //ID AQUI
+  console.log(props.id)
+
   return (
     <Card className={classes.card}>
       <div className={classes.details}>

@@ -19,6 +19,7 @@ function PreguntasList(props) {
             materia={props.preguntas[pregunta].materia}
             tema={props.preguntas[pregunta].tema}
             respuesta={props.preguntas[pregunta].opciones[0]}
+            id = {pregunta}
           />
         ))
       }
