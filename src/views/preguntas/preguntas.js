@@ -8,6 +8,7 @@ import ViewLayout from "../../components/molecules/view-layout";
 import { withRouter } from 'react-router-dom'
 import api from '../../api.json'
 import { database } from "../../config/firebase";
+//import {Container, Col} from 'reactstrap';
 
 class Preguntas extends Component {
 
@@ -122,6 +123,7 @@ class Preguntas extends Component {
     return (
       <ViewLayout>
 
+
         <PreguntaForm
           {...this.state.questionForm}
           handleChange={this.handleChange}
@@ -134,28 +136,26 @@ class Preguntas extends Component {
           open={this.state.open}
         />
 
-        <MateriaForm
-          {...this.state.materiaForm}
-          handleChange={this.handleChange}
-
-          api={api}
-          open={this.state.open}
-        />
-
-        <TemaForm
-          {...this.state.temaForm}
-          handleChange={this.handleChange}
-
-          api={api}
-          open={this.state.open}
-        />
-
-
         <PreguntasList
           preguntas={this.state.preguntas}
           handleDelete={this.handleDelete}
           handleEdit={this.handleEdit}
         />
+
+                  <MateriaForm
+                    {...this.state.materiaForm}
+                    handleChange={this.handleChange}
+                    api={api}
+                    open={this.state.open}
+                  />
+
+                  <TemaForm
+                    {...this.state.temaForm}
+                    handleChange={this.handleChange}
+                    api={api}
+                    open={this.state.open}
+                  />
+
       </ViewLayout>
     );
   }

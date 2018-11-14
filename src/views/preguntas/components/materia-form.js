@@ -15,6 +15,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const styles = {
   card: {
@@ -67,8 +68,54 @@ function MateriaForm(props) {
           <Button  fullWidth color="primary" variant="contained" size="small">
             Guardar
           </Button>
+</CardActions>
+          <CardContent>
 
-        </CardActions>
+            <Typography
+              color="primary"
+              gutterBottom
+              variant="title"
+              component="h1"
+            >
+              Modificar Materia
+            </Typography>
+
+            <form className={classes.form} onSubmit={props.handleSubmit}>
+
+
+            <TextField
+              select
+              label="Materia"
+              className={classes.textField}
+              SelectProps={{ native: true }}
+              margin="normal"
+              value={props.materia}
+            >
+              {Object.keys(props.api.materias).map((materia, id) => (
+                <option key={id} value={materia}>
+                  {materia}
+                </option>
+              ))}
+            </TextField>
+
+
+
+
+
+            </form>
+          </CardContent>
+          <CardActions>
+          <Button  fullWidth variant="contained" color="secondary" className={classes.button}>
+            Borrar
+            <DeleteIcon className={classes.rightIcon} />
+          </Button>
+          <Button  fullWidth variant="contained" className={classes.button}>
+            Editar
+          </Button>
+
+          </CardActions>
+
+
       </Card>
     </Grid>
   );

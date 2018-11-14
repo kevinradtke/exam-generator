@@ -10,6 +10,8 @@ import {
   TextField,
   InputAdornment
 } from "@material-ui/core";
+
+import DeleteIcon from '@material-ui/icons/Delete';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -85,9 +87,55 @@ function PreguntaForm(props) {
 
         </CardActions>
 
+        <CardContent>
+
+          <Typography
+            color="primary"
+            gutterBottom
+            variant="title"
+            component="h1"
+          >
+            Modificar Tema
+          </Typography>
+
+          <form className={classes.form} onSubmit={props.handleSubmit}>
+
+
+          <TextField
+            select
+            label="Materia"
+            className={classes.textField}
+            SelectProps={{ native: true }}
+            margin="normal"
+            value={props.materia}
+          >
+            {Object.keys(props.api.materias).map((materia, id) => (
+              <option key={id} value={materia}>
+                {materia}
+              </option>
+            ))}
+          </TextField>
+
+
+
+
+
+          </form>
+        </CardContent>
+        <CardActions>
+        <Button  fullWidth variant="contained" color="secondary" className={classes.button}>
+          Borrar
+          <DeleteIcon className={classes.rightIcon} />
+        </Button>
+        <Button  fullWidth variant="contained" className={classes.button}>
+          Editar
+        </Button>
+
+        </CardActions>
 
 
       </Card>
+
     </Grid>
   );
 }
