@@ -61,11 +61,9 @@ function PreguntaForm(props) {
               className={classes.textField}
               SelectProps={{ native: true }}
               margin="normal"
-              onChange={(e) => props.handleChange(e, "materia")}
-              value={props.materia}
             >
               {Object.keys(props.api.materias).map((materia, id) => (
-                <option key={id} value={materia}>
+                <option key={id} >
                   {materia}
                 </option>
               ))}
@@ -75,8 +73,6 @@ function PreguntaForm(props) {
               label="Nombre de tema"
               className={classes.textField}
               margin="normal"
-              onChange={(e) => props.handleChange(e, "name")}
-              value={props.name}
             />
 
 

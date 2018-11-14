@@ -58,14 +58,13 @@ function MateriaForm(props) {
               label="Materia"
               className={classes.textField}
               margin="normal"
-              onChange={(e) => props.handleChange(e, "name")}
-              value={props.name}
+
             />
 
           </form>
         </CardContent>
         <CardActions>
-          <Button fullWidth color="primary" variant="contained" size="small">
+          <Button  fullWidth color="primary" variant="contained" size="small">
             Guardar
           </Button>
 

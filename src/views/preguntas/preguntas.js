@@ -58,6 +58,8 @@ class Preguntas extends Component {
     })
   }
 
+
+
   handleSubmit = () => {
     let id = Date.now();
     database
@@ -69,6 +71,7 @@ class Preguntas extends Component {
       })
       .catch(error => console.log(error))
   }
+
 
 
   handleDelete = (event, id) => {
