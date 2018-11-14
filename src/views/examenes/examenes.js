@@ -5,6 +5,10 @@ import ViewLayout from "../../components/molecules/view-layout";
 import { withRouter } from 'react-router-dom'
 import api from '../../api.json'
 import { database } from "../../config/firebase"
+var pdfMake = require('pdfmake/build/pdfmake.js')
+
+require('pdfmake/build/vfs_fonts.js')
+require('pdfmake/build/vfs_fonts.js')
 
 class Examenes extends Component {
 
@@ -12,6 +16,12 @@ class Examenes extends Component {
 
   componentDidMount() {
     this.setObserver();
+    this.createPDF();
+  }
+
+  createPDF = () =>{
+    var docDefinition = { content: 'This is an sample PDF printed with pdfMake' };
+    // pdfMake.createPdf(docDefinition).download();
   }
 
   state = {
@@ -77,6 +87,8 @@ handleChange = (event, id) => {
 //RENDERS VIEW
 
   render() {
+
+
     return (
       <ViewLayout>
         <ExamenForm
