@@ -49,7 +49,7 @@ function ExamenesCard(props) {
             <b>Numero de preguntas:</b> {props.npreguntas}
           </Typography>
           <CardActions>
-            <Button fullWidth variant="contained" color="secondary" className={classes.button}>
+            <Button onClick={(e) => props.handleDelete(e, props.id)} fullWidth variant="contained" color="secondary" className={classes.button}>
               Borrar
               <DeleteIcon className={classes.rightIcon} />
             </Button>
