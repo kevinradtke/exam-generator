@@ -5,6 +5,10 @@ import ViewLayout from "../../components/molecules/view-layout";
 import { withRouter } from 'react-router-dom'
 import api from '../../api.json'
 import { database } from "../../config/firebase"
+import ExportPDF from '../../components/export';
+
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf'
 
 class Examenes extends Component {
 
@@ -18,12 +22,35 @@ class Examenes extends Component {
     examForm: {
       titulo: "",
       materia: "Matemáticas",
+<<<<<<< HEAD
+      tema: "",
+      npreguntas: ""
+=======
       temas: "",
       npreguntas: "",
       nversiones: ""
+>>>>>>> 1152917952e1c358abf35f16d064bd0f801aa0cc
     },
     examenes: null,
-    // materias: null
+    materias: null,
+
+
+    //ESTADO PARA GENERAR PDFS
+    pdf: {
+      titulo: "Examen Final",
+      materia: "Matemáticas",
+      tema: "Restas",
+      preguntas: {
+        0: {
+          name: "¿5-3?",
+          opciones: ["2","4","6"]
+        },
+        1: {
+          name: "¿20-5?",
+          opciones: ["15", "16"]
+        }
+      }
+    }
   }
 
   setObserver = () => {
@@ -84,10 +111,23 @@ handleChange = (event, id) => {
 
 handleGenPDF = (event, id) => {
   alert("PDF generado para el examen con id " + id)
+  this.printDocument()
 }
 
 handleEdit = (event, id) => {
   alert("Edicion de examen con id " + id)
+}
+
+printDocument = () =>  {
+  const input = document.getElementById('toPrint');
+  html2canvas(input)
+    .then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF();
+      pdf.addImage(imgData, 'JPEG', 0, 0);
+      // pdf.output('dataurlnewwindow');
+      pdf.save("download.pdf");
+    })
 }
 
 //RENDERS VIEW
@@ -109,6 +149,21 @@ handleEdit = (event, id) => {
           handleGenPDF={this.handleGenPDF}
           handleEdit={this.handleEdit}
         />
+
+        {
+          <div id="toPrint" className="toPrint">
+            <p> {this.state.pdf.titulo} </p>
+            <p>Materia: {this.state.pdf.materia} / Tema: {this.state.pdf.tema}</p>
+            <p>Nombre del alumno: ______________________________</p>
+            <p>1. {this.state.pdf.preguntas[0].name}</p>
+            <p>a){this.state.pdf.preguntas[0].opciones[0]} &nbsp; &nbsp; b){this.state.pdf.preguntas[0].opciones[1]} &nbsp; &nbsp;
+            c){this.state.pdf.preguntas[0].opciones[2]} </p>
+
+            <p>2. {this.state.pdf.preguntas[1].name}</p>
+            <p>a){this.state.pdf.preguntas[1].opciones[0]} &nbsp; &nbsp; b){this.state.pdf.preguntas[1].opciones[1]}</p>
+          </div>
+        }
+
       </ViewLayout>
     );
   }

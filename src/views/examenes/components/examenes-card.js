@@ -10,7 +10,6 @@ import {
   CardActions,
 } from "@material-ui/core/";
 import DeleteIcon from '@material-ui/icons/Delete';
-import ExportPDF from '../../../components/export';
 
 const styles = theme => ({
   root: {
