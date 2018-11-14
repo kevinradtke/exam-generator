@@ -79,6 +79,10 @@ class Preguntas extends Component {
       .catch(error => console.log(error))
   };
 
+  handleEdit = (event, id) => {
+    alert("Edicion activada para la pregunta con id " + id)
+  };
+
   handleOptionChange = (event, id) => {
     let newState = { ...this.state };
     newState.questionForm.opciones[id] = event.target.value;
@@ -129,6 +133,7 @@ class Preguntas extends Component {
         <PreguntasList
           preguntas={this.state.preguntas}
           handleDelete={this.handleDelete}
+          handleEdit={this.handleEdit}
         />
       </ViewLayout>
     );

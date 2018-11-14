@@ -21,7 +21,7 @@ function PreguntasList(props) {
             respuesta={props.preguntas[pregunta].opciones[0]}
             id = {pregunta}
             handleDelete={props.handleDelete}
-
+            handleEdit={props.handleEdit}
           />
         ))
       }

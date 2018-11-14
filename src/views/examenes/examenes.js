@@ -12,11 +12,6 @@ class Examenes extends Component {
 
   componentDidMount() {
     this.setObserver();
-    this.createPDF();
-  }
-
-  createPDF = () =>{
-    console.log("")
   }
 
   state = {
@@ -85,6 +80,14 @@ handleChange = (event, id) => {
   this.setState(newState);
 }
 
+handleGenPDF = (event, id) => {
+  alert("PDF generado para el examen con id " + id)
+}
+
+handleEdit = (event, id) => {
+  alert("Edicion de examen con id " + id)
+}
+
 //RENDERS VIEW
 
   render() {
@@ -101,6 +104,8 @@ handleChange = (event, id) => {
         <ExamenesList
           examenes={this.state.examenes}
           handleDelete={this.handleDelete}
+          handleGenPDF={this.handleGenPDF}
+          handleEdit={this.handleEdit}
         />
       </ViewLayout>
     );

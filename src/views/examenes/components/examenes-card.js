@@ -10,6 +10,7 @@ import {
   CardActions,
 } from "@material-ui/core/";
 import DeleteIcon from '@material-ui/icons/Delete';
+import ExportPDF from '../../../components/export';
 
 const styles = theme => ({
   root: {
@@ -53,10 +54,10 @@ function ExamenesCard(props) {
               Borrar
               <DeleteIcon className={classes.rightIcon} />
             </Button>
-            <Button fullWidth variant="contained" className={classes.button}>
+            <Button onClick={(e) => props.handleEdit(e, props.id)} fullWidth variant="contained" className={classes.button}>
               Editar
             </Button>
-            <Button fullWidth variant="contained" color="primary" className={classes.button}>
+            <Button onClick={(e) => props.handleGenPDF(e, props.id)} fullWidth variant="contained" color="primary" className={classes.button}>
               Generar PDF
             </Button>
           </CardActions>

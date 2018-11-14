@@ -57,7 +57,7 @@ function PreguntasCard(props) {
               Borrar
               <DeleteIcon className={classes.rightIcon} />
             </Button>
-            <Button fullWidth variant="contained" className={classes.button}>
+            <Button onClick={(e) => props.handleEdit(e, props.id)} fullWidth variant="contained" className={classes.button}>
               Editar
             </Button>
           </CardActions>

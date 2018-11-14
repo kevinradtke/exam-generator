@@ -22,6 +22,8 @@ function ExamenesList(props) {
             npreguntas={props.examenes[examen].npreguntas}
             id = {examen}
             handleDelete={props.handleDelete}
+            handleGenPDF={props.handleGenPDF}
+            handleEdit={props.handleEdit}
           />
         ))
       }
