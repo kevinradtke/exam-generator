@@ -115,9 +115,6 @@ function PreguntaForm(props) {
               </option>
             ))}
           </TextField>
-
-<<<<<<< HEAD
-=======
         { /* <TextField
             select
             label="Tema"
@@ -133,35 +130,18 @@ function PreguntaForm(props) {
               </option>
             ))}
           </TextField> */}
->>>>>>> 8227f064396c7ebfba0e5b15a668e02718bb0a7b
-
-
-
-
           </form>
         </CardContent>
         <CardActions>
-<<<<<<< HEAD
-        <Button  fullWidth variant="contained" color="secondary" className={classes.button}>
-          Borrar
-          <DeleteIcon className={classes.rightIcon} />
-        </Button>
-        <Button  fullWidth variant="contained" className={classes.button}>
-=======
         <Button  onClick={props.handleDeleteT} fullWidth variant="contained" color="secondary" className={classes.button}>
           Borrar
           <DeleteIcon className={classes.rightIcon} />
         </Button>
         <Button  onClick={props.handleEditT} fullWidth variant="contained" className={classes.button}>
->>>>>>> 8227f064396c7ebfba0e5b15a668e02718bb0a7b
           Editar
         </Button>
-
         </CardActions>
-
-
       </Card>
-
     </Grid>
   );
 }

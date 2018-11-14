@@ -108,6 +108,30 @@ class Preguntas extends Component {
     this.setState(newState);
   };
 
+  handleChangeM = () => {
+    alert("Materia creada")
+  }
+
+  handleDeleteM = () => {
+    alert("Materia eliminada")
+  }
+
+  handleEditM = () => {
+    alert("Materia modificada")
+  }
+
+  handleChangeT = () => {
+    alert("Tema creado")
+  }
+
+  handleDeleteT = () => {
+    alert("Tema eliminado")
+  }
+
+  handleEditT = () => {
+    alert("Tema modificado")
+  }
+
   handleClickOpen = () => {
     this.setState({ open: true });
   };
@@ -143,33 +167,21 @@ class Preguntas extends Component {
 
                   <MateriaForm
                     {...this.state.materiaForm}
-                    handleChange={this.handleChange}
+                    handleChangeM={this.handleChangeM}
+                    handleDeleteM={this.handleDeleteM}
+                    handleEditM={this.handleEditM}
                     api={api}
                     open={this.state.open}
                   />
 
                   <TemaForm
                     {...this.state.temaForm}
-                    handleChange={this.handleChange}
+                    handleChangeT={this.handleChangeT}
+                    handleDeleteT={this.handleDeleteT}
+                    handleEditT={this.handleEditT}
                     api={api}
                     open={this.state.open}
                   />
-
-        <MateriaForm
-          {...this.state.materiaForm}
-          handleChange={this.handleChange}
-
-          api={api}
-          open={this.state.open}
-        />
-
-        <TemaForm
-          {...this.state.temaForm}
-          handleChange={this.handleChange}
-
-          api={api}
-          open={this.state.open}
-        />
     </ViewLayout>
     );
   }
