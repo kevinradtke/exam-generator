@@ -32,7 +32,9 @@
 }
 
 .toPrint {
-  
+  display:run-in;
+  font-size: 10px;
+  color: white;
 }
 
 a {

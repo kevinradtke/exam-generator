@@ -135,8 +135,7 @@ class Preguntas extends Component {
           api={api}
           open={this.state.open}
         />
-
-        <PreguntasList
+      <PreguntasList
           preguntas={this.state.preguntas}
           handleDelete={this.handleDelete}
           handleEdit={this.handleEdit}
@@ -156,7 +155,22 @@ class Preguntas extends Component {
                     open={this.state.open}
                   />
 
-      </ViewLayout>
+        <MateriaForm
+          {...this.state.materiaForm}
+          handleChange={this.handleChange}
+
+          api={api}
+          open={this.state.open}
+        />
+
+        <TemaForm
+          {...this.state.temaForm}
+          handleChange={this.handleChange}
+
+          api={api}
+          open={this.state.open}
+        />
+    </ViewLayout>
     );
   }
 }

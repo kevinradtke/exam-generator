@@ -65,7 +65,11 @@ function MateriaForm(props) {
           </form>
         </CardContent>
         <CardActions>
+<<<<<<< HEAD
           <Button  fullWidth color="primary" variant="contained" size="small">
+=======
+          <Button  onClick={props.handleChangeM} fullWidth color="primary" variant="contained" size="small">
+>>>>>>> 8227f064396c7ebfba0e5b15a668e02718bb0a7b
             Guardar
           </Button>
 </CardActions>
@@ -105,12 +109,20 @@ function MateriaForm(props) {
             </form>
           </CardContent>
           <CardActions>
+
           <Button  fullWidth variant="contained" color="secondary" className={classes.button}>
             Borrar
             <DeleteIcon className={classes.rightIcon} />
           </Button>
           <Button  fullWidth variant="contained" className={classes.button}>
-            Editar
+
+          <Button onClick={props.handleDeleteM} fullWidth variant="contained" color="secondary" className={classes.button}>
+            Borrar
+            <DeleteIcon className={classes.rightIcon} />
+          </Button>
+          <Button onClick={props.handleEditM} fullWidth variant="contained" className={classes.button}>
+
+                    Editar
           </Button>
 
           </CardActions>

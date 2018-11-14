@@ -22,35 +22,23 @@ class Examenes extends Component {
     examForm: {
       titulo: "",
       materia: "Matemáticas",
-<<<<<<< HEAD
       tema: "",
-      npreguntas: ""
-=======
-      temas: "",
       npreguntas: "",
       nversiones: ""
->>>>>>> 1152917952e1c358abf35f16d064bd0f801aa0cc
     },
     examenes: null,
+    preguntas: null,
     materias: null,
-
 
     //ESTADO PARA GENERAR PDFS
     pdf: {
       titulo: "Examen Final",
       materia: "Matemáticas",
       tema: "Restas",
-      preguntas: {
-        0: {
-          name: "¿5-3?",
-          opciones: ["2","4","6"]
-        },
-        1: {
-          name: "¿20-5?",
-          opciones: ["15", "16"]
-        }
-      }
+      preguntas: "",
+      nversiones: 0
     }
+
   }
 
   setObserver = () => {
@@ -60,6 +48,7 @@ class Examenes extends Component {
       this.setState({
         ...this.state,
         examenes: snapshot.val().examenes,
+        preguntas: snapshot.val().preguntas,
       })
     });
   }
@@ -110,8 +99,33 @@ handleChange = (event, id) => {
 }
 
 handleGenPDF = (event, id) => {
-  alert("PDF generado para el examen con id " + id)
+  let pdfInfo = ""
+  let pdfPreguntas = []
+  this.state.examenes && Object.keys(this.state.examenes).map((examen, index) => (
+    (id === examen) && (pdfInfo = this.state.examenes[examen])
+  ))
+
+  this.state.preguntas && Object.keys(this.state.preguntas).map((preg, index) => (
+    (this.state.preguntas[preg].tema === pdfInfo.tema) &&
+    ( pdfPreguntas.push(this.state.preguntas[preg]))
+  ))
+
+  console.log(pdfPreguntas)
+
+  this.setState({
+    ...this.state,
+    pdf: {
+      titulo: pdfInfo.titulo,
+      materia: pdfInfo.materia,
+      nversiones: pdfInfo.nversiones,
+      tema: pdfInfo.tema,
+      preguntas: pdfPreguntas
+      }
+  })
+
+  document.getElementById('toPrint').style.color = 'black'
   this.printDocument()
+  alert("PDF generado para el examen con id " + id)
 }
 
 handleEdit = (event, id) => {
@@ -119,23 +133,25 @@ handleEdit = (event, id) => {
 }
 
 printDocument = () =>  {
-  const input = document.getElementById('toPrint');
-  html2canvas(input)
-    .then((canvas) => {
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF();
-      pdf.addImage(imgData, 'JPEG', 0, 0);
-      // pdf.output('dataurlnewwindow');
-      pdf.save("download.pdf");
-    })
+  console.log(this.state.pdf.nversiones)
+  for (var i =0; i<this.state.pdf.nversiones; i++){
+    const input = document.getElementById('toPrint');
+    html2canvas(input)
+      .then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF();
+        pdf.addImage(imgData, 'JPEG', 0, 0);
+        // pdf.output('dataurlnewwindow');
+        pdf.save("download.pdf");
+      })
+  }
 }
 
 //RENDERS VIEW
 
   render() {
-
-
     return (
+
       <ViewLayout>
         <ExamenForm
           {...this.state.examForm}
@@ -150,19 +166,28 @@ printDocument = () =>  {
           handleEdit={this.handleEdit}
         />
 
-        {
-          <div id="toPrint" className="toPrint">
-            <p> {this.state.pdf.titulo} </p>
-            <p>Materia: {this.state.pdf.materia} / Tema: {this.state.pdf.tema}</p>
-            <p>Nombre del alumno: ______________________________</p>
-            <p>1. {this.state.pdf.preguntas[0].name}</p>
-            <p>a){this.state.pdf.preguntas[0].opciones[0]} &nbsp; &nbsp; b){this.state.pdf.preguntas[0].opciones[1]} &nbsp; &nbsp;
-            c){this.state.pdf.preguntas[0].opciones[2]} </p>
 
-            <p>2. {this.state.pdf.preguntas[1].name}</p>
-            <p>a){this.state.pdf.preguntas[1].opciones[0]} &nbsp; &nbsp; b){this.state.pdf.preguntas[1].opciones[1]}</p>
-          </div>
-        }
+        <div id="toPrint" className="toPrint">
+          <p> {this.state.pdf.titulo} </p>
+          <p>Materia: {this.state.pdf.materia} / Tema: {this.state.pdf.tema}</p>
+          <p>Nombre del alumno: ______________________________</p>
+
+
+            {this.state.pdf.preguntas && Object.keys(this.state.pdf.preguntas).map((pregunta,id) => (
+              <p>
+              {id+1}. {this.state.pdf.preguntas[pregunta].name} <br></br>
+              {
+                (this.state.pdf.preguntas[pregunta].opciones).map((opcion, oid) =>
+                <p>
+                {oid===0 ? "a" :
+                  oid===1 ? "b" :
+                    oid===2 ? "c": "d"}) {this.state.pdf.preguntas[pregunta].opciones[oid]}
+                </p>)
+              }
+              </p>
+            ))}
+
+        </div>
 
       </ViewLayout>
     );

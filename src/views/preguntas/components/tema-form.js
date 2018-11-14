@@ -81,7 +81,7 @@ function PreguntaForm(props) {
           </form>
         </CardContent>
         <CardActions>
-          <Button fullWidth color="primary" variant="contained" size="small">
+          <Button onClick={props.handleChangeT} fullWidth color="primary" variant="contained" size="small">
             Guardar
           </Button>
 
@@ -116,6 +116,24 @@ function PreguntaForm(props) {
             ))}
           </TextField>
 
+<<<<<<< HEAD
+=======
+        { /* <TextField
+            select
+            label="Tema"
+            className={classes.textField}
+            SelectProps={{ native: true }}
+            margin="normal"
+            value={props.tema}
+          >
+          <option hidden value=""></option>
+            {Object.keys(props.api.materias[props.materia]).map((tema, id) => (
+              <option key={id} value={props.api.materias[props.materia][tema]}>
+                {props.api.materias[props.materia][tema]}
+              </option>
+            ))}
+          </TextField> */}
+>>>>>>> 8227f064396c7ebfba0e5b15a668e02718bb0a7b
 
 
 
@@ -123,11 +141,19 @@ function PreguntaForm(props) {
           </form>
         </CardContent>
         <CardActions>
+<<<<<<< HEAD
         <Button  fullWidth variant="contained" color="secondary" className={classes.button}>
           Borrar
           <DeleteIcon className={classes.rightIcon} />
         </Button>
         <Button  fullWidth variant="contained" className={classes.button}>
+=======
+        <Button  onClick={props.handleDeleteT} fullWidth variant="contained" color="secondary" className={classes.button}>
+          Borrar
+          <DeleteIcon className={classes.rightIcon} />
+        </Button>
+        <Button  onClick={props.handleEditT} fullWidth variant="contained" className={classes.button}>
+>>>>>>> 8227f064396c7ebfba0e5b15a668e02718bb0a7b
           Editar
         </Button>
 
