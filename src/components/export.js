@@ -7,8 +7,10 @@ import jsPDF from 'jspdf'
 
 
 export default class Export extends Component {
+
   constructor(props) {
     super(props);
+    console.log(props.examenes)
   }
 
   printDocument() {
@@ -21,17 +23,19 @@ export default class Export extends Component {
         // pdf.output('dataurlnewwindow');
         pdf.save("download.pdf");
       })
-    ;
   }
 
   render() {
-    return (<div>
+    return (
+      <div>
       <div className="mb5">
         <button onClick={this.printDocument}>Print</button>
       </div>
+
       <div id="divToPrint" className="mt4">
-        <div>Note: Here the dimensions of div are same as A4</div>
-        <div>You Can add any component here</div>
+        <h4>Examen de Matematicas I </h4>
+        <h5>Tema: Restas</h5>
+        <div>Nombre del alumno: _________________________</div>
       </div>
     </div>);
   }
