@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import PreguntaForm from "./components/pregunta-form";
+import MateriaForm from "./components/materia-form";
+import TemaForm from "./components/tema-form";
 import PreguntasList from './components/preguntas-list';
 //import PreguntasCard from './components/preguntas-card';
 import ViewLayout from "../../components/molecules/view-layout";
@@ -124,6 +126,22 @@ class Preguntas extends Component {
           handleSubmit={this.handleSubmit}
           handleClose={this.handleClose}
           handleClickOpen={this.handleClickOpen}
+
+          api={api}
+          open={this.state.open}
+        />
+
+        <MateriaForm
+          {...this.state.materiaForm}
+          handleChange={this.handleChange}
+
+          api={api}
+          open={this.state.open}
+        />
+
+        <TemaForm
+          {...this.state.temaForm}
+          handleChange={this.handleChange}
 
           api={api}
           open={this.state.open}

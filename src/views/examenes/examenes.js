@@ -22,8 +22,14 @@ class Examenes extends Component {
     examForm: {
       titulo: "",
       materia: "Matemáticas",
+<<<<<<< HEAD
       tema: "",
       npreguntas: ""
+=======
+      temas: "",
+      npreguntas: "",
+      nversiones: ""
+>>>>>>> 1152917952e1c358abf35f16d064bd0f801aa0cc
     },
     examenes: null,
     materias: null,
@@ -68,7 +74,8 @@ resetForm = () => {
       titulo: "",
       materia: "Matemáticas",
       tema: "",
-      npreguntas: 0
+      npreguntas: 0,
+      nversiones: 0
       }
   })
 }

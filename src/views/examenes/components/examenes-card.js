@@ -48,6 +48,9 @@ function ExamenesCard(props) {
           <Typography variant="subheading">
             <b>Numero de preguntas:</b> {props.npreguntas}
           </Typography>
+          <Typography variant="subheading">
+            <b>Numero de versiones:</b> {props.nversiones}
+          </Typography>
           <CardActions>
             <Button onClick={(e) => props.handleDelete(e, props.id)} fullWidth variant="contained" color="secondary" className={classes.button}>
               Borrar
