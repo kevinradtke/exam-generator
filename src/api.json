@@ -4,7 +4,8 @@
       "titulo": "Examen 1",
       "materia": "Matemáticas",
       "tema": "Álgebra",
-      "npreguntas": 2
+      "npreguntas": 2,
+      "nversiones": 5
     }
   },
   "materias": {

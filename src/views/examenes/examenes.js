@@ -19,7 +19,8 @@ class Examenes extends Component {
       titulo: "",
       materia: "Matemáticas",
       temas: "",
-      npreguntas: ""
+      npreguntas: "",
+      nversiones: ""
     },
     examenes: null,
     // materias: null
@@ -46,7 +47,8 @@ resetForm = () => {
       titulo: "",
       materia: "Matemáticas",
       tema: "",
-      npreguntas: 0
+      npreguntas: 0,
+      nversiones: 0
       }
   })
 }

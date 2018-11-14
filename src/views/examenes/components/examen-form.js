@@ -97,6 +97,14 @@ function ExamenForm(props) {
               value={props.npreguntas}
             />
 
+            <TextField
+              label="Número de versiones"
+              className={classes.textField}
+              margin="normal"
+              onChange={(e) => props.handleChange(e, "nversiones")}
+              value={props.nversiones}
+            />
+
           </form>
 
         </CardContent>
