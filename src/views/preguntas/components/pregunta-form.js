@@ -10,6 +10,11 @@ import {
   TextField,
   InputAdornment
 } from "@material-ui/core";
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 const styles = {
   card: {
@@ -133,10 +138,39 @@ function PreguntaForm(props) {
           <Button onClick={props.handleSubmit} fullWidth color="primary" variant="contained" size="small">
             Guardar
           </Button>
-          <Button fullWidth variant="contained" size="small">
+          <Button onClick={props.handleClickOpen} fullWidth variant="contained" size="small">
             Info
           </Button>
         </CardActions>
+
+
+        <Dialog
+          open={props.open}
+          onClose={props.handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">{"¿Cómo crear preguntas dinámicas?"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Para usar las funciones dinamicas: use la tecla # para indicar el nombre de una variable,
+              seguido de llaves [ ] en donde pondrá los rangos de esa variable separados por una coma.
+            </DialogContentText>
+            <DialogContentText id="alert-dialog-description">
+              <b>Ejemplo: </b> #a[1,5]
+            </DialogContentText>
+            <DialogContentText id="alert-dialog-description">
+              <b>Ojo: </b> Las opciones tambien deben utilizar esa variable creada para generar la respuesta correcta.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={props.handleClose} color="primary" autoFocus>
+              OK
+            </Button>
+          </DialogActions>
+        </Dialog>
+
+
       </Card>
     </Grid>
   );

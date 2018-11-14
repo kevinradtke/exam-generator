@@ -23,6 +23,7 @@ class Preguntas extends Component {
       opciones: [""]
     },
     preguntas: null,
+    open: false,
     // materias: null
   };
 
@@ -90,6 +91,14 @@ class Preguntas extends Component {
     this.setState(newState);
   };
 
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
 
   //RENDERS VIEW
 
@@ -101,7 +110,10 @@ class Preguntas extends Component {
           handleChange={this.handleChange}
           handleOptionChange={this.handleOptionChange}
           handleSubmit={this.handleSubmit}
+          handleClose={this.handleClose}
+          handleClickOpen={this.handleClickOpen}
           api={api}
+          open={this.state.open}
         />
         <PreguntasList
           preguntas={this.state.preguntas}
